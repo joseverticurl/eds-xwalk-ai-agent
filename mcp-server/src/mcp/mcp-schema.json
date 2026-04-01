@@ -1,0 +1,183 @@
+{
+  "name": "eds-xwalk-ai-agent",
+  "version": "0.1.0",
+  "tools": [
+    {
+      "name": "admin.siteConfig.read",
+      "description": "Read site config (/config/{org}/sites/{site}.json).",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "org": { "type": "string" },
+          "site": { "type": "string" },
+          "apiKey": { "type": "string" },
+          "authToken": { "type": "string" }
+        },
+        "required": ["org", "site"]
+      }
+    },
+    {
+      "name": "admin.siteConfig.create",
+      "description": "Create site config (PUT /config/{org}/sites/{site}.json).",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "org": { "type": "string" },
+          "site": { "type": "string" },
+          "config": { "type": "object" },
+          "apiKey": { "type": "string" },
+          "authToken": { "type": "string" }
+        },
+        "required": ["org", "site", "config"]
+      }
+    },
+    {
+      "name": "admin.siteConfig.update",
+      "description": "Update site config (POST /config/{org}/sites/{site}.json).",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "org": { "type": "string" },
+          "site": { "type": "string" },
+          "config": { "type": "object" },
+          "versionName": { "type": "string" },
+          "migrate": { "type": "boolean" },
+          "validate": { "type": "boolean" },
+          "apiKey": { "type": "string" },
+          "authToken": { "type": "string" }
+        },
+        "required": ["org", "site", "config"]
+      }
+    },
+    {
+      "name": "admin.siteConfig.delete",
+      "description": "Delete site config (DELETE /config/{org}/sites/{site}.json).",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "org": { "type": "string" },
+          "site": { "type": "string" },
+          "apiKey": { "type": "string" },
+          "authToken": { "type": "string" }
+        },
+        "required": ["org", "site"]
+      }
+    },
+    {
+      "name": "admin.status.get",
+      "description": "Get overall status of a resource (/status/{org}/{site}/{ref}/{path}).",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "org": { "type": "string" },
+          "site": { "type": "string" },
+          "ref": { "type": "string" },
+          "path": { "type": "string" },
+          "apiKey": { "type": "string" },
+          "authToken": { "type": "string" }
+        },
+        "required": ["org", "site", "ref", "path"]
+      }
+    },
+    {
+      "name": "admin.preview.update",
+      "description": "Update preview of a resource (POST /preview/{org}/{site}/{ref}/{path}).",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "org": { "type": "string" },
+          "site": { "type": "string" },
+          "ref": { "type": "string" },
+          "path": { "type": "string" },
+          "forceUpdateRedirects": { "type": "boolean" },
+          "apiKey": { "type": "string" },
+          "authToken": { "type": "string" }
+        },
+        "required": ["org", "site", "ref", "path"]
+      }
+    },
+    {
+      "name": "admin.live.publish",
+      "description": "Publish a resource (POST /live/{org}/{site}/{ref}/{path}).",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "org": { "type": "string" },
+          "site": { "type": "string" },
+          "ref": { "type": "string" },
+          "path": { "type": "string" },
+          "forceUpdateRedirects": { "type": "boolean" },
+          "disableNotifications": { "type": "boolean" },
+          "apiKey": { "type": "string" },
+          "authToken": { "type": "string" }
+        },
+        "required": ["org", "site", "ref", "path"]
+      }
+    },
+    {
+      "name": "admin.live.unpublish",
+      "description": "Unpublish a resource (DELETE /live/{org}/{site}/{ref}/{path}).",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "org": { "type": "string" },
+          "site": { "type": "string" },
+          "ref": { "type": "string" },
+          "path": { "type": "string" },
+          "disableNotifications": { "type": "boolean" },
+          "apiKey": { "type": "string" },
+          "authToken": { "type": "string" }
+        },
+        "required": ["org", "site", "ref", "path"]
+      }
+    },
+    {
+      "name": "admin.cache.purge",
+      "description": "Purge live cache (POST /cache/{org}/{site}/{ref}/{path}).",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "org": { "type": "string" },
+          "site": { "type": "string" },
+          "ref": { "type": "string" },
+          "path": { "type": "string" },
+          "apiKey": { "type": "string" },
+          "authToken": { "type": "string" }
+        },
+        "required": ["org", "site", "ref", "path"]
+      }
+    },
+    {
+      "name": "admin.index.trigger",
+      "description": "Trigger indexing for a resource (POST /index/{org}/{site}/{ref}/{path}).",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "org": { "type": "string" },
+          "site": { "type": "string" },
+          "ref": { "type": "string" },
+          "path": { "type": "string" },
+          "apiKey": { "type": "string" },
+          "authToken": { "type": "string" }
+        },
+        "required": ["org", "site", "ref", "path"]
+      }
+    },
+    {
+      "name": "admin.sitemap.generate",
+      "description": "Generate sitemap (POST /sitemap/{org}/{site}/{ref}/{path}).",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "org": { "type": "string" },
+          "site": { "type": "string" },
+          "ref": { "type": "string" },
+          "path": { "type": "string" },
+          "apiKey": { "type": "string" },
+          "authToken": { "type": "string" }
+        },
+        "required": ["org", "site", "ref", "path"]
+      }
+    }
+  ]
+}

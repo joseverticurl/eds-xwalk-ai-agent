@@ -3,7 +3,7 @@
 This repo provides an **AI dev agent runtime** for EDS projects that use **XWalk / Universal Editor (UE)** authoring.
 
 It does two things:
-- **Rules + guidance** (in-repo): contracts, validators, examples, Cursor rules/commands.
+- **Rules + guidance** (in-repo): contracts, validators, examples, Cursor rules, **project skills** (`.cursor/skills/`), commands, and **`AGENTS.md`** (sub-agent patterns).
 - **Runtime** (`mcp-server/`): deterministic generators/validators + external integrations (Admin API, Figma) exposed via HTTP and an MCP-style dispatcher.
 
 ## Core workflow (non‑negotiable)
@@ -37,8 +37,10 @@ For every EDS block:
 
 ### `.cursor/` (Cursor behavior)
 
-- `.cursor/rules/` enforces repo-wide non-negotiables.
-- `.cursor/commands/` provides repeatable workflows (backend generation, validation, frontend generation, token extraction, MCP calls).
+- `.cursor/rules/` enforces repo-wide non-negotiables (`eds-xwalk.md`) and orchestration (`cursor-orchestration.mdc`).
+- `.cursor/skills/` holds **project skills** — short workflows with YAML frontmatter so the agent can pick the right playbook.
+- `.cursor/commands/` provides repeatable workflows (REST and MCP-only variants, orchestration, audits).
+- Root **`AGENTS.md`** documents parallel **sub-agent** usage for large audits.
 
 ### `mcp-server/` (runtime)
 
@@ -52,9 +54,8 @@ Provides HTTP endpoints and an MCP-style dispatcher:
 
 ### Generate a block
 
-- Call `POST /generate/block/backend`
-- Paste UE HTML → call `POST /validate/ue-html`
-- Call `POST /generate/block/frontend`
+- Prefer **one integration surface**: `POST /mcp/call` with tools `generate.block.backend` → `validate.ueHtml` → `generate.block.frontend` (see `docs/mcp-usage.md` and `.cursor/commands/orchestrate-block-xwalk.md`).
+- Or use direct REST: `POST /generate/block/backend`, `POST /validate/ue-html`, `POST /generate/block/frontend`.
 
 ### Extract tokens from Figma
 
@@ -74,3 +75,8 @@ Provides HTTP endpoints and an MCP-style dispatcher:
 - **Figma token extraction fails**: missing/invalid `FIGMA_TOKEN` or wrong `fileKey`.
 
 - **Admin operations fail**: missing `AEM_ADMIN_API_BASE_URL` or invalid auth (`apiKey`/`authToken`).
+
+## Verifying the runtime
+
+- **Unit tests**: `cd mcp-server && npm run test`
+- **Smoke demo** (server must be running): `cd mcp-server && npm run smoke`

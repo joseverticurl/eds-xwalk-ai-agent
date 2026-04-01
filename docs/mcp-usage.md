@@ -41,10 +41,13 @@ Payload shape:
 
 ## Core tools (recommended)
 
-Matching Cursor commands under `.cursor/commands/`:
+**Cursor command shortcuts** (MCP-only path):
+
 - `mcp-call-generate-block-backend.md`
 - `mcp-call-validate-ue-html.md`
 - `mcp-call-generate-block-frontend.md`
+
+**Tool names** (use in `POST /mcp/call`):
 
 - `generate.block.backend`
   - **Purpose**: Step 1 backend XWalk JSON + model fields

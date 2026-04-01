@@ -8,8 +8,10 @@ This repo is split into:
 ## Repository map
 
 - `AGENT.md`: top-level behavior contract (3-step workflow + constraints)
-- `.cursor/rules/`: Cursor-enforced rules
-- `.cursor/commands/`: repeatable local workflows
+- `.cursor/rules/`: Cursor-enforced rules (includes `cursor-orchestration.mdc` — skills + sub-agents)
+- `.cursor/skills/*/SKILL.md`: **project skills** (YAML `description` for agent discovery)
+- `.cursor/commands/`: repeatable local workflows (REST and/or MCP-only variants)
+- `AGENTS.md`: how to use **sub-agents** for parallel repo audits in Cursor
 - `agent/`: deeper guidance (contracts, rules, validators, examples, templates, transformations)
 - `mcp-server/`: Node runtime (Express) exposing endpoints + MCP-style dispatcher
 - `playground/sample-inputs/`: known-good inputs for demo/testing
@@ -48,7 +50,8 @@ This is the recommended “single integration surface” for Cursor/agents.
 - Update frontend generator pattern support (`mcp-server/src/services/generation/block-frontend-generator.js`)
 - Add a rule doc under `agent/rules/blocks/`
 - Add a worked example under `agent/examples/`
-- Optionally add a new Cursor command under `.cursor/commands/`
+- Optionally extend `.cursor/skills/eds-xwalk-block-workflow/SKILL.md` or add a focused skill
+- Optionally add a Cursor command under `.cursor/commands/`
 
 ### Add a new MCP tool
 

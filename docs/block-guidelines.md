@@ -38,3 +38,8 @@ For block `<block>`:
 - **RTE**: prefer CSS-only styling; JS only for small deterministic transforms.
 
 See `agent/rules/blocks/` and `agent/examples/` for concrete references.
+
+## Cursor helpers
+
+- Block workflow skill: `.cursor/skills/eds-xwalk-block-workflow/SKILL.md`
+- After Step 3, quality checklist skill: `.cursor/skills/eds-block-quality/SKILL.md`

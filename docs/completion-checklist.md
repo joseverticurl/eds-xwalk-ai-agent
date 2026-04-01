@@ -40,4 +40,16 @@ This checklist defines what “complete” means for this repo.
 
 - [x] `mcp-server/README.md` documents endpoints + env vars
 - [x] `npm run smoke` exercises: backend → validate UE HTML → frontend
+- [x] `docs/` covers architecture, how-it-works, MCP usage, Cursor setup, block guidelines
+
+## F) Cursor integration
+
+- [x] `.cursor/rules/`: EDS workflow + orchestration (`cursor-orchestration.mdc`)
+- [x] `.cursor/skills/`: project skills with YAML `name` / `description`
+- [x] `.cursor/commands/`: step commands, MCP-only variants, orchestration, admin, audit
+- [x] `AGENTS.md`: sub-agent patterns for parallel audits
+
+## G) Automated tests (runtime)
+
+- [x] `cd mcp-server && npm run test` runs core unit tests (generators, UE HTML analyzer)
 

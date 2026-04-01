@@ -11,4 +11,4 @@ Admin API reference: [AEM Admin API](https://www.aem.live/docs/admin.html)
 - `AGENTS.md`: how to use **sub-agents** for parallel audits in Cursor
 - `mcp-server/`: runtime server (REST + MCP-style `POST /mcp/call`)
 - `integrations/`: Cursor/Figma/AEM helpers
-- `docs/`: architecture + usage docs
+- `docs/`: architecture + usage docs (start at [`docs/README.md`](docs/README.md))

@@ -21,6 +21,10 @@ npm run dev
 
 Server listens on `PORT` (default `8787`).
 
+## Architecture note
+
+Request flow is **Express routes → controllers → services** (generators, UE HTML analyzer, Figma, Admin API client). **`POST /mcp/call`** dispatches to the same services. Prompts/skills/rules for Cursor and external LLMs live in the repo root (`agent/`, `.cursor/`), not inside empty engine stubs.
+
 ## Auth
 
 The Admin API supports:

@@ -26,6 +26,8 @@ Typical route flow:
 4) Service call (generator/validator/transformer)
 5) Standard JSON response with `ok`, results, and (when relevant) artifacts
 
+**Orchestration** is intentionally thin: there is no separate “execution engine” package in `mcp-server`. Flow is **routes → controllers/services → JSON/MCP**. Prompting, rules, and skills for the **LLM** live in `agent/`, `.cursor/skills/`, and `.cursor/rules/`; the server stays deterministic for generation/validation/admin/Figma.
+
 ## MCP-style dispatcher
 
 The runtime also provides:

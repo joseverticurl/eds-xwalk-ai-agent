@@ -56,6 +56,7 @@ Provides HTTP endpoints and an MCP-style dispatcher:
 
 - Prefer **one integration surface**: `POST /mcp/call` with tools `generate.block.backend` → `validate.ueHtml` → `generate.block.frontend` (see `docs/mcp-usage.md` and `.cursor/commands/orchestrate-block-xwalk.md`).
 - Or use direct REST: `POST /generate/block/backend`, `POST /validate/ue-html`, `POST /generate/block/frontend`.
+- **From Figma URL + block name + user story (optional):** see [`docs/workflow-figma-user-story.md`](./workflow-figma-user-story.md) and `.cursor/commands/generate-block-from-figma-and-story.md` (UE HTML still required for Step 3).
 
 ### Extract tokens from Figma
 

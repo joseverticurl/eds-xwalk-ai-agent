@@ -57,6 +57,8 @@ This server accepts either per-request:
   - `POST /admin/sitemap/generate`
 - **Transform**
   - `POST /transform/figma/tokens` (extract design tokens from Figma styles)
+- **Parse**
+  - `POST /parse/figma-url` (body `{ "url": "https://www.figma.com/design/..." }` → `fileKey`, optional `nodeIds`; no network)
 - **Tool dispatch (MCP-style)**
   - `GET /mcp/tools` (list tools from `mcp-schema.json`)
   - `POST /mcp/call` (dispatch `{ tool, arguments }` to handlers)

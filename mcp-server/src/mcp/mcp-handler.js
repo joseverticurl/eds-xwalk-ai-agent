@@ -9,6 +9,7 @@ import { FigmaService } from '../services/figma/figma-service.js';
 import { buildDesignTokens } from '../services/figma/tokens.js';
 import { AdminApiClient } from '../services/admin/admin-api-client.js';
 import { getAdminApiConfig } from '../config/admin-api-config.js';
+import { parseFigmaUrl } from '../utils/parse-figma-url.js';
 
 /**
  * Minimal MCP-style tool dispatcher over HTTP.
@@ -74,6 +75,10 @@ async function dispatchToolCall({ tool, args, req }) {
     case 'validate.ueHtml': {
       const { html, expectations } = args ?? {};
       return validateUeHtml({ html, expectations });
+    }
+    case 'parse.figma.url': {
+      const { url } = args ?? {};
+      return parseFigmaUrl(url);
     }
     case 'transform.figma.tokens': {
       const { fileKey, nodeIds } = args ?? {};

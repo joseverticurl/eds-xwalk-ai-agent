@@ -66,6 +66,10 @@ Payload shape:
   - **Key args**: `fileKey`, optional `nodeIds`
   - **Requires**: `FIGMA_TOKEN` in server env
 
+- `parse.figma.url`
+  - **Purpose**: extract `fileKey` + optional `nodeIds` from a Figma share URL (no token, no network)
+  - **Key args**: `url`
+
 ## Admin tools
 
 All Admin API calls are exposed as `admin.*` tools (see `/mcp/tools` output).

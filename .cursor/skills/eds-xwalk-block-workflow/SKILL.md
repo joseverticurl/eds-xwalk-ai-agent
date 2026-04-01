@@ -10,6 +10,11 @@ description: >-
 
 Use for any **block** task: new block, refactor, or validating structure before FE.
 
+**Optional inputs** (see `.cursor/commands/generate-block-from-figma-and-story.md`):
+
+- Figma URL → parse with `parse.figma.url` / `POST /parse/figma-url`, then tokens with `transform.figma.tokens` if `FIGMA_TOKEN` is set.
+- User story (paste text; PDF is not parsed by the server) → inform ordered `fields[]` before Step 1.
+
 ## Non‑negotiable order
 
 1. **Step 1 — Backend** — XWalk block JSON + ordered model fields (`blocks/<block>/_<block>.json` payload).  

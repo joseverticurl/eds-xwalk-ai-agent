@@ -58,6 +58,17 @@
       }
     },
     {
+      "name": "parse.figma.url",
+      "description": "Parse a Figma share URL into fileKey and optional node id(s) for tokens/API. No network call.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "url": { "type": "string" }
+        },
+        "required": ["url"]
+      }
+    },
+    {
       "name": "admin.siteConfig.read",
       "description": "Read site config (/config/{org}/sites/{site}.json).",
       "inputSchema": {

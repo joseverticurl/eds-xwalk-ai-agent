@@ -1,0 +1,21 @@
+<!--
+  Universal Editor HTML template (CONTRACT ONLY)
+
+  IMPORTANT:
+  - The agent MUST NOT generate UE HTML for actual blocks.
+  - UE HTML must come from the Universal Editor output in the target project.
+
+  Use this file only as a documentation scaffold to describe the index contract
+  expected from user-provided UE HTML.
+-->
+
+<div class="<block>">
+  <!--
+    block.children[0] = <describe>
+    block.children[1] = <describe>
+    ...
+
+    NOTE: tag names/wrappers may differ in real UE output.
+    Do not rely on `data-*` attributes for structure.
+  -->
+</div>

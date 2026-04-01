@@ -1,0 +1,12 @@
+{
+  "html": "<div class=\"hero\"><div><picture></picture></div><div><h1>Title</h1></div><div><p>Body</p></div></div>",
+  "expectations": {
+    "minDirectChildren": 3,
+    "rows": [
+      { "index": 0, "tagName": "div", "minChildren": 1 },
+      { "index": 1, "tagName": "div", "minChildren": 1 },
+      { "index": 2, "tagName": "div", "minChildren": 0 }
+    ]
+  }
+}
+

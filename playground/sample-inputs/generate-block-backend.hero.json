@@ -1,0 +1,11 @@
+{
+  "blockName": "hero",
+  "title": "Hero",
+  "fields": [
+    { "component": "reference", "name": "image", "label": "Image", "valueType": "string", "multi": false },
+    { "component": "text", "name": "imageAlt", "label": "Alt", "valueType": "string", "value": "" },
+    { "component": "text", "name": "title", "label": "Title", "valueType": "string", "value": "" },
+    { "component": "richtext", "name": "text", "label": "Text", "valueType": "string", "value": "" }
+  ]
+}
+

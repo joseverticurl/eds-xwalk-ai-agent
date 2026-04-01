@@ -1,0 +1,29 @@
+/* EDS block CSS template
+ *
+ * Principles:
+ * - Mobile-first
+ * - Shallow selectors
+ * - Scoped to the block
+ * - Prefer layout via grid/flex + gap
+ */
+
+.<block>.<block>--decorated {
+  display: grid;
+  gap: 16px;
+}
+
+/* Example subparts */
+/* .<block>__media { } */
+/* .<block>__content { } */
+
+/* Media defaults */
+.<block> img,
+.<block> picture {
+  max-width: 100%;
+}
+
+.<block> img {
+  display: block;
+  width: 100%;
+  height: auto;
+}

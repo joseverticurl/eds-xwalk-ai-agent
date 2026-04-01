@@ -1,12 +1,17 @@
 import { AdminApiClient } from '../services/admin/admin-api-client.js';
 import { getAdminApiConfig } from '../config/admin-api-config.js';
+import { requireJsonBody, validateBody } from '../middleware/validation-middleware.js';
 
 /**
  * Minimal REST wrapper around AEM Admin API.
  * This is used both for debugging and for MCP tool handlers.
  */
 export function registerAdminRoutes(app) {
-  app.post('/admin/status/get', async (req, res, next) => {
+  app.post(
+    '/admin/status/get',
+    requireJsonBody(),
+    validateBody({ required: ['org', 'site'], properties: { org: { type: 'string', minLength: 1 }, site: { type: 'string', minLength: 1 } } }),
+    async (req, res, next) => {
     try {
       const client = createClient(req);
       const { org, site, ref, path } = req.body ?? {};
@@ -15,9 +20,14 @@ export function registerAdminRoutes(app) {
     } catch (e) {
       next(e);
     }
-  });
+    }
+  );
 
-  app.post('/admin/preview/update', async (req, res, next) => {
+  app.post(
+    '/admin/preview/update',
+    requireJsonBody(),
+    validateBody({ required: ['org', 'site'], properties: { org: { type: 'string', minLength: 1 }, site: { type: 'string', minLength: 1 } } }),
+    async (req, res, next) => {
     try {
       const client = createClient(req);
       const { org, site, ref, path, forceUpdateRedirects } = req.body ?? {};
@@ -26,9 +36,14 @@ export function registerAdminRoutes(app) {
     } catch (e) {
       next(e);
     }
-  });
+    }
+  );
 
-  app.post('/admin/live/publish', async (req, res, next) => {
+  app.post(
+    '/admin/live/publish',
+    requireJsonBody(),
+    validateBody({ required: ['org', 'site'], properties: { org: { type: 'string', minLength: 1 }, site: { type: 'string', minLength: 1 } } }),
+    async (req, res, next) => {
     try {
       const client = createClient(req);
       const { org, site, ref, path, forceUpdateRedirects, disableNotifications } = req.body ?? {};
@@ -37,9 +52,14 @@ export function registerAdminRoutes(app) {
     } catch (e) {
       next(e);
     }
-  });
+    }
+  );
 
-  app.post('/admin/live/unpublish', async (req, res, next) => {
+  app.post(
+    '/admin/live/unpublish',
+    requireJsonBody(),
+    validateBody({ required: ['org', 'site'], properties: { org: { type: 'string', minLength: 1 }, site: { type: 'string', minLength: 1 } } }),
+    async (req, res, next) => {
     try {
       const client = createClient(req);
       const { org, site, ref, path, disableNotifications } = req.body ?? {};
@@ -48,9 +68,14 @@ export function registerAdminRoutes(app) {
     } catch (e) {
       next(e);
     }
-  });
+    }
+  );
 
-  app.post('/admin/cache/purge', async (req, res, next) => {
+  app.post(
+    '/admin/cache/purge',
+    requireJsonBody(),
+    validateBody({ required: ['org', 'site'], properties: { org: { type: 'string', minLength: 1 }, site: { type: 'string', minLength: 1 } } }),
+    async (req, res, next) => {
     try {
       const client = createClient(req);
       const { org, site, ref, path } = req.body ?? {};
@@ -59,9 +84,14 @@ export function registerAdminRoutes(app) {
     } catch (e) {
       next(e);
     }
-  });
+    }
+  );
 
-  app.post('/admin/index/trigger', async (req, res, next) => {
+  app.post(
+    '/admin/index/trigger',
+    requireJsonBody(),
+    validateBody({ required: ['org', 'site'], properties: { org: { type: 'string', minLength: 1 }, site: { type: 'string', minLength: 1 } } }),
+    async (req, res, next) => {
     try {
       const client = createClient(req);
       const { org, site, ref, path } = req.body ?? {};
@@ -70,9 +100,14 @@ export function registerAdminRoutes(app) {
     } catch (e) {
       next(e);
     }
-  });
+    }
+  );
 
-  app.post('/admin/sitemap/generate', async (req, res, next) => {
+  app.post(
+    '/admin/sitemap/generate',
+    requireJsonBody(),
+    validateBody({ required: ['org', 'site'], properties: { org: { type: 'string', minLength: 1 }, site: { type: 'string', minLength: 1 } } }),
+    async (req, res, next) => {
     try {
       const client = createClient(req);
       const { org, site, ref, path } = req.body ?? {};
@@ -81,9 +116,14 @@ export function registerAdminRoutes(app) {
     } catch (e) {
       next(e);
     }
-  });
+    }
+  );
 
-  app.post('/admin/site-config/read', async (req, res, next) => {
+  app.post(
+    '/admin/site-config/read',
+    requireJsonBody(),
+    validateBody({ required: ['org', 'site'], properties: { org: { type: 'string', minLength: 1 }, site: { type: 'string', minLength: 1 } } }),
+    async (req, res, next) => {
     try {
       const client = createClient(req);
       const { org, site } = req.body ?? {};
@@ -92,9 +132,17 @@ export function registerAdminRoutes(app) {
     } catch (e) {
       next(e);
     }
-  });
+    }
+  );
 
-  app.post('/admin/site-config/create', async (req, res, next) => {
+  app.post(
+    '/admin/site-config/create',
+    requireJsonBody(),
+    validateBody({
+      required: ['org', 'site', 'config'],
+      properties: { org: { type: 'string', minLength: 1 }, site: { type: 'string', minLength: 1 }, config: { type: 'object' } }
+    }),
+    async (req, res, next) => {
     try {
       const client = createClient(req);
       const { org, site, config } = req.body ?? {};
@@ -103,9 +151,17 @@ export function registerAdminRoutes(app) {
     } catch (e) {
       next(e);
     }
-  });
+    }
+  );
 
-  app.post('/admin/site-config/update', async (req, res, next) => {
+  app.post(
+    '/admin/site-config/update',
+    requireJsonBody(),
+    validateBody({
+      required: ['org', 'site', 'config'],
+      properties: { org: { type: 'string', minLength: 1 }, site: { type: 'string', minLength: 1 }, config: { type: 'object' } }
+    }),
+    async (req, res, next) => {
     try {
       const client = createClient(req);
       const { org, site, config, versionName, migrate, validate } = req.body ?? {};
@@ -114,9 +170,14 @@ export function registerAdminRoutes(app) {
     } catch (e) {
       next(e);
     }
-  });
+    }
+  );
 
-  app.post('/admin/site-config/delete', async (req, res, next) => {
+  app.post(
+    '/admin/site-config/delete',
+    requireJsonBody(),
+    validateBody({ required: ['org', 'site'], properties: { org: { type: 'string', minLength: 1 }, site: { type: 'string', minLength: 1 } } }),
+    async (req, res, next) => {
     try {
       const client = createClient(req);
       const { org, site } = req.body ?? {};
@@ -125,7 +186,8 @@ export function registerAdminRoutes(app) {
     } catch (e) {
       next(e);
     }
-  });
+    }
+  );
 }
 
 function createClient(req) {

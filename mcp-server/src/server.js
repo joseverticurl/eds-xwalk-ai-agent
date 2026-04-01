@@ -6,6 +6,7 @@ import { createLogger } from './utils/logger.js';
 import { getServerConfig } from './config/server-config.js';
 
 import { registerRoutes } from './routes/index.js';
+import { registerMcpHandlers } from './mcp/mcp-handler.js';
 
 const log = createLogger({ name: 'server' });
 const config = getServerConfig(process.env);
@@ -17,6 +18,7 @@ app.use(express.json({ limit: config.jsonBodyLimit }));
 app.get('/healthz', (req, res) => res.status(200).json({ ok: true }));
 
 registerRoutes(app);
+registerMcpHandlers(app);
 
 app.use(errorHandler({ log }));
 

@@ -3,6 +3,61 @@
   "version": "0.1.0",
   "tools": [
     {
+      "name": "generate.block.backend",
+      "description": "Generate EDS XWalk block-level JSON (Step 1) for blocks/<name>/_<name>.json.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "blockName": { "type": "string" },
+          "title": { "type": "string" },
+          "modelId": { "type": "string" },
+          "hasModel": { "type": "boolean" },
+          "fields": {
+            "type": "array",
+            "items": { "type": "object" }
+          }
+        },
+        "required": ["blockName", "fields"]
+      }
+    },
+    {
+      "name": "generate.block.frontend",
+      "description": "Generate EDS block frontend artifacts (Step 3) from user-provided UE HTML (index-based JS + CSS).",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "blockName": { "type": "string" },
+          "ueHtml": { "type": "string" },
+          "pattern": { "type": "string", "description": "Optional: hero|carousel|tabs (default generic)" }
+        },
+        "required": ["blockName", "ueHtml"]
+      }
+    },
+    {
+      "name": "validate.ueHtml",
+      "description": "Validate Universal Editor HTML (Step 2 gate).",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "html": { "type": "string" },
+          "expectations": { "type": "object" }
+        },
+        "required": ["html"]
+      }
+    },
+    {
+      "name": "transform.figma.tokens",
+      "description": "Extract design tokens from Figma styles (requires FIGMA_TOKEN).",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "fileKey": { "type": "string" },
+          "nodeIds": { "type": "array", "items": { "type": "string" } }
+        },
+        "required": ["fileKey"]
+      }
+    },
+    {
       "name": "admin.siteConfig.read",
       "description": "Read site config (/config/{org}/sites/{site}.json).",
       "inputSchema": {

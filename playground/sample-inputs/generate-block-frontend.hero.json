@@ -1,0 +1,6 @@
+{
+  "blockName": "hero",
+  "pattern": "hero",
+  "ueHtml": "<div class=\"hero\"><div><picture></picture></div><div><h1>Title</h1></div><div><p>Body</p></div></div>"
+}
+

@@ -1,0 +1,32 @@
+/**
+ * EDS block template (XWalk / Universal Editor)
+ *
+ * Non-negotiable:
+ * - Do not depend on `data-*` attributes for structure/selection.
+ * - Use index-based access for structure: `block.children[n]`, `row.children[n]`.
+ * - Exactly one JS file per block: `blocks/<block>/<block>.js`.
+ */
+
+export default function decorate(block) {
+  /**
+   * Structure contract (index-based, derived from UE HTML):
+   * - block.children[0] = <describe row 0>
+   * - block.children[1] = <describe row 1>
+   * - ...
+   *
+   * Notes:
+   * - Optional/empty authoring fields may cause missing rows/cells.
+   * - Code must be defensive (null checks / optional chaining).
+   */
+
+  const rows = Array.from(block.children);
+  if (rows.length === 0) return;
+
+  block.classList.add('<block>--decorated');
+
+  // Example: assign classes to key parts by index
+  // const row0 = rows[0];
+  // if (row0) row0.classList.add('<block>__row0');
+
+  // Keep DOM operations scoped to `block`.
+}

@@ -1,15 +1,20 @@
 import { FigmaService } from '../services/figma/figma-service.js';
 import { buildDesignTokens } from '../services/figma/tokens.js';
+import { requireJsonBody, validateBody } from '../middleware/validation-middleware.js';
 
 export function registerTransformRoutes(app) {
-  app.post('/transform/figma/tokens', async (req, res, next) => {
-    try {
-      const { fileKey, nodeIds } = req.body ?? {};
-      if (!fileKey) {
-        return res.status(400).json({ error: { message: 'Missing `fileKey`' } });
-      }
+  app.post(
+    '/transform/figma/tokens',
+    requireJsonBody(),
+    validateBody({
+      required: ['fileKey'],
+      properties: { fileKey: { type: 'string', minLength: 1 }, nodeIds: { type: 'array' } }
+    }),
+    async (req, res, next) => {
+      try {
+        const { fileKey, nodeIds } = req.body ?? {};
 
-      const figma = new FigmaService({ env: process.env });
+        const figma = new FigmaService({ env: process.env });
 
       const styles = await figma.getFileStyles({ fileKey });
       const styleNodeIds = (styles?.meta?.styles ?? [])
@@ -31,13 +36,14 @@ export function registerTransformRoutes(app) {
       }
 
       const tokenBundle = buildDesignTokens({ styles, nodesById });
-      res.json({
-        ok: true,
-        fileKey,
-        tokenBundle
-      });
-    } catch (e) {
-      next(e);
+        res.json({
+          ok: true,
+          fileKey,
+          tokenBundle
+        });
+      } catch (e) {
+        next(e);
+      }
     }
-  });
+  );
 }

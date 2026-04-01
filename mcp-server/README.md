@@ -35,6 +35,9 @@ This server accepts either per-request:
 
 ## Endpoints (initial set)
 
+- **Generate**
+  - `POST /generate/block/backend` (generate XWalk block-level JSON for `blocks/<name>/_<name>.json`)
+  - `POST /generate/block/frontend` (generate `<name>.js` + `<name>.css` from user-provided UE HTML)
 - **Site config**
   - `POST /admin/site-config/read`
   - `POST /admin/site-config/create`
@@ -50,6 +53,9 @@ This server accepts either per-request:
   - `POST /admin/sitemap/generate`
 - **Transform**
   - `POST /transform/figma/tokens` (extract design tokens from Figma styles)
+- **Tool dispatch (MCP-style)**
+  - `GET /mcp/tools` (list tools from `mcp-schema.json`)
+  - `POST /mcp/call` (dispatch `{ tool, arguments }` to handlers)
 
 ## Example: update site config
 
@@ -57,6 +63,30 @@ This server accepts either per-request:
 curl -X POST http://localhost:8787/admin/site-config/update ^
   -H "content-type: application/json" ^
   -d "{\"org\":\"myorg\",\"site\":\"mysite\",\"apiKey\":\"<API_KEY>\",\"config\":{\"version\":1,\"created\":\"2020-01-01T00:00:00Z\",\"lastModified\":\"2020-01-01T00:00:00Z\",\"content\":{},\"code\":{}}}"
+```
+
+## Example: generate block backend JSON (Step 1)
+
+```bash
+curl -X POST http://localhost:8787/generate/block/backend ^
+  -H "content-type: application/json" ^
+  -d "{\"blockName\":\"hero\",\"title\":\"Hero\",\"fields\":[{\"component\":\"text\",\"name\":\"title\",\"label\":\"Title\",\"valueType\":\"string\"}]}"
+```
+
+## Example: generate block frontend artifacts (Step 3)
+
+```bash
+curl -X POST http://localhost:8787/generate/block/frontend ^
+  -H "content-type: application/json" ^
+  -d "{\"blockName\":\"hero\",\"ueHtml\":\"<div class=\\\"hero\\\"><div><picture></picture></div><div><h1>Title</h1></div><div><p>Body</p></div></div>\"}"
+```
+
+## Example: tool dispatch (MCP-style)
+
+```bash
+curl -X POST http://localhost:8787/mcp/call ^
+  -H "content-type: application/json" ^
+  -d "{\"tool\":\"generate.block.frontend\",\"arguments\":{\"blockName\":\"hero\",\"pattern\":\"hero\",\"ueHtml\":\"<div class=\\\"hero\\\"><div><picture></picture></div><div><h1>Title</h1></div><div><p>Body</p></div></div>\"}}"
 ```
 
 ## Example: extract Figma design tokens

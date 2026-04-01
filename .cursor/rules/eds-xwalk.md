@@ -29,3 +29,9 @@ You are working in the `eds-xwalk-ai-agent` repo.
 - `GET /mcp/tools` → list available tools
 - `POST /mcp/call` → call a tool by name with `{ tool, arguments }`
 
+## Cursor integration in this repo
+
+- **Project skills** (for discovery): `.cursor/skills/*/SKILL.md` — read the skill whose `description` matches the user task.
+- **Commands**: `.cursor/commands/` — use **`orchestrate-block-xwalk.md`** for the full 3-step block flow.
+- **Sub-agents**: see root **`AGENTS.md`** and **`audit-repo-with-subagents.md`** for parallel audits.
+

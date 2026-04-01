@@ -2,6 +2,8 @@
 description: Generate EDS block frontend (Step 3: JS + CSS)
 ---
 
+**Skills:** `.cursor/skills/eds-xwalk-block-workflow/SKILL.md` (Step 3) · `.cursor/skills/eds-block-quality/SKILL.md` (review)
+
 Generate **Step 3** frontend artifacts for an EDS XWalk block from **user-provided Universal Editor HTML**.
 
 Requirements:

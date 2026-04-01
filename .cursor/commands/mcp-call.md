@@ -2,6 +2,8 @@
 description: Call any tool via /mcp/call (unified dispatcher)
 ---
 
+**Skill:** match task to `.cursor/skills/*/SKILL.md` (block / figma / admin / quality)
+
 Use the unified tool dispatcher endpoint for consistent execution of generation/validation/transform/admin tools.
 
 Endpoints:

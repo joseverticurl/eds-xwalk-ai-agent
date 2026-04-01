@@ -2,6 +2,8 @@
 description: Manage EDS site config via Admin API (/admin/site-config/*)
 ---
 
+**Skill:** `.cursor/skills/eds-aem-admin-api/SKILL.md`
+
 Use these endpoints to create/read/update/delete site configuration via the runtime server.
 
 Auth (choose one):

@@ -2,6 +2,8 @@
 description: Generate EDS XWalk backend JSON (Step 1)
 ---
 
+**Skill:** `.cursor/skills/eds-xwalk-block-workflow/SKILL.md` (Step 1 only here)
+
 Generate **only Step 1** for an EDS XWalk block: the backend JSON payload for `blocks/<block-name>/_<block-name>.json`.
 
 Ask for:

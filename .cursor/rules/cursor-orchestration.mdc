@@ -1,0 +1,25 @@
+---
+description: How to use Cursor skills, commands, and sub-agents in this repo
+alwaysApply: true
+---
+
+# Cursor orchestration (eds-xwalk-ai-agent)
+
+## Skills
+
+- **Read and follow** `.cursor/skills/*/SKILL.md` when the user task matches that skill’s YAML `description` (block workflow, Figma tokens, Admin API, block quality).
+- For deeper narrative, use `agent/skills/*.md`, `agent/rules/`, and `agent/validators/`.
+
+## Commands
+
+- Prefer **`.cursor/commands/`** for repeatable HTTP/MCP flows (backend, validate, frontend, figma, admin, `mcp/call`).
+- For end-to-end block work, start from **`.cursor/commands/orchestrate-block-xwalk.md`**.
+
+## Sub-agents
+
+- For repo-wide or multi-folder work, **spawn parallel sub-agents** (see root **`AGENTS.md`**) instead of scanning everything serially in one thread.
+
+## Consistency
+
+- **Do not invent UE HTML.** Backend → user UE HTML → frontend.
+- **Index-based FE only**; one JS + one CSS per block name.

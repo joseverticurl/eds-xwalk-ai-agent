@@ -2,6 +2,8 @@
 description: Run Admin API operations (status/publish/cache/index/sitemap)
 ---
 
+**Skill:** `.cursor/skills/eds-aem-admin-api/SKILL.md`
+
 Use these endpoints for operational tasks on an EDS project via the runtime server.
 
 Auth (choose one):

@@ -2,6 +2,8 @@
 description: Extract Figma tokens via MCP dispatcher (tool: transform.figma.tokens)
 ---
 
+**Skill:** `.cursor/skills/eds-figma-design-tokens/SKILL.md`
+
 Use the unified dispatcher endpoint to extract design tokens from Figma.
 
 Requirements:

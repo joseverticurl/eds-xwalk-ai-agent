@@ -2,6 +2,8 @@
 description: Extract design tokens from Figma styles
 ---
 
+**Skill:** `.cursor/skills/eds-figma-design-tokens/SKILL.md`
+
 Extract design tokens (colors/typography/effects) from a Figma file using the runtime endpoint.
 
 Requirements:
